@@ -19,8 +19,9 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(["1,1;1,2;2,1;3,1;2,2;1,3;1,4;2,3;3,2;4,1;4,2;3,3;2,4;3,4;4,3;4,4"], ZigzagMatrix.sort(4))
 
     def test_Five(self):
-        self.assertEqual(["1,1;1,2;2,1;3,1;2,2;1,3;1,4;2,3;3,2;4,1;5,1;4,2;3,3;2,4;1,5;2,5;3,4;4,3;5,2;5,3;4,4;3,5;4,5;5,4;5,5"], ZigzagMatrix.sort(5))
-
+        self.assertEqual(
+            ["1,1;1,2;2,1;3,1;2,2;1,3;1,4;2,3;3,2;4,1;5,1;4,2;3,3;2,4;1,5;2,5;3,4;4,3;5,2;5,3;4,4;3,5;4,5;5,4;5,5"],
+            ZigzagMatrix.sort(5))
 
 
 if __name__ == '__main__':
