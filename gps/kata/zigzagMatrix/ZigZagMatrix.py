@@ -17,8 +17,17 @@ class ZigzagMatrix(object):
 
         if (param == 2):
             startSubMatrix += (twoSubMatrix + ";2,2")
+
         if param > 2:
-            threeSubMatrix = twoSubMatrix + ";3,1;2,2;1,3"
+            # threeSubMatrix = twoSubMatrix + ";3,1;2,2;1,3"
+            threeSubMatrix = twoSubMatrix
+            xIndex = 3
+            yIndex = 1
+            while xIndex >= 1:
+                threeSubMatrix += ";" + (str(xIndex) + "," + str(yIndex))
+                yIndex += 1
+                xIndex -= 1
+
         if param == 3:
             startSubMatrix += (threeSubMatrix + ";2,3;3,2;3,3")
         if param > 3:
