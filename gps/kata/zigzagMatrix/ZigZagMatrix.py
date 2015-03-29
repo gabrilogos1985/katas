@@ -6,7 +6,6 @@ class ZigzagMatrix(object):
     def sort(cls, param):
         startSubMatrix = "1,1"
         if param > 1:
-            # twoSubMatrix = ";1,2;2,1"
             counter = 2
             while counter <= param:
                 if counter % 2 == 0:
@@ -18,7 +17,6 @@ class ZigzagMatrix(object):
                         yIndex -= 1
                         xIndex += 1
                 else:
-                    # threeSubMatrix = twoSubMatrix
                     xIndex = counter
                     yIndex = 1
                     while xIndex >= 1:
@@ -27,18 +25,21 @@ class ZigzagMatrix(object):
                         xIndex -= 1
                 counter += 1
         if param % 2 == 0:
-            xIndex = param
-            yIndex = 2
-            while xIndex > 1:
-                startSubMatrix += ";" + str(xIndex) + "," + str(yIndex)
-                xIndex -= 1
-                yIndex += 1
-            xIndex = 3
-            yIndex = param
-            while xIndex <= param:
-                startSubMatrix += ";" + str(xIndex) + "," + str(yIndex)
-                xIndex += 1
-                yIndex -= 1
+            for counterSufixMatrix in range(2, param + 1):
+                if counterSufixMatrix % 2 == 0:
+                    xIndex = param
+                    yIndex = counterSufixMatrix
+                    while yIndex <= param:
+                        startSubMatrix += ";" + str(xIndex) + "," + str(yIndex)
+                        xIndex -= 1
+                        yIndex += 1
+                else:
+                    xIndex = counterSufixMatrix
+                    yIndex = param
+                    while xIndex <= param:
+                        startSubMatrix += ";" + str(xIndex) + "," + str(yIndex)
+                        xIndex += 1
+                        yIndex -= 1
         else:
             xIndex = 2
             yIndex = param
@@ -48,16 +49,6 @@ class ZigzagMatrix(object):
                 yIndex -= 1
         if param == 3:
             startSubMatrix += (";3,3")
-        if param == 4:
-            # xIndex = 3
-            # yIndex = 4
-            # while xIndex <= 4:
-            #   startSubMatrix += ";" + str(xIndex) + "," + str(yIndex)
-            #  xIndex += 1
-            # yIndex -= 1
-            startSubMatrix += (";4,4")
         if param == 5:
             startSubMatrix += (";5,3;4,4;3,5;4,5;5,4;5,5")
-        if param == 6:
-            startSubMatrix += ";6,4;5,5;4,6;5,6;6,5;6,6"
         return [startSubMatrix]
