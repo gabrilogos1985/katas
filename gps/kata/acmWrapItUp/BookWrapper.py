@@ -2,8 +2,10 @@ __author__ = 'gabe'
 
 
 class BookWrapper(object):
+    FULL_WRAP_AROUND_MILIS=80
+
     def wrapItUp(self, booksDimensions):
-        minLenght = 0
-        for book in booksDimensions:
-            minLenght +=book[0]
-        return minLenght
+        minLenght = self.FULL_WRAP_AROUND_MILIS
+        #for book in booksDimensions:
+            #minLenght +=book[1]
+        return minLenght + booksDimensions[0][0]
