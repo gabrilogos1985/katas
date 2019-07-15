@@ -18,7 +18,7 @@ class BookMinLengthCutterTest(unittest.TestCase):
         bookDimension = self.bookWrapper.getMinLengthToCut(books)
         self.assertEqual(408, bookDimension)
 
-    def test_twoBook(self):
+    def test_twoBookACMExample(self):
         book1 = BookDimension()
         book1.height = 700
         book1.width = 1080
@@ -28,6 +28,40 @@ class BookMinLengthCutterTest(unittest.TestCase):
         books = [book1, book2]
         bookDimension = self.bookWrapper.getMinLengthToCut(books)
         self.assertEqual(1080, bookDimension)
+
+    def test_twoBooksMoreWaste(self):
+        book1 = BookDimension()
+        book1.height = 1080
+        book1.width = 500
+        book2 = BookDimension()
+        book2.height = 690
+        book2.width = 1080
+        books = [book1, book2]
+        bookDimension = self.bookWrapper.getMinLengthToCut(books)
+        self.assertEqual(1080, bookDimension)
+
+    def test_twoBooksLessWaste(self):
+        book1 = BookDimension()
+        book1.height = 1080
+        book1.width = 300
+        book2 = BookDimension()
+        book2.height = 390
+        book2.width = 1080
+        books = [book1, book2]
+        bookDimension = self.bookWrapper.getMinLengthToCut(books)
+        self.assertEqual(690, bookDimension)
+
+    def test_twoBooksDifferentLengthSideExceed(self):
+        book1 = BookDimension()
+        book1.height = 500
+        book1.width = 1200
+        book2 = BookDimension()
+        book2.height = 1000
+        book2.width = 500
+        books = [book1, book2]
+        bookDimension = self.bookWrapper.getMinLengthToCut(books)
+        self.assertEqual(1000, bookDimension)
+
 
 if __name__ == '__main__':
     unittest.main()

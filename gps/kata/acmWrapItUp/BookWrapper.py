@@ -27,6 +27,24 @@ class BookWrapper(object):
                 if book != otherBook:
                     if book.width == otherBook.width or book.width == otherBook.height:
                         minLength = book.width
-                    elif book.height == otherBook.height or book.width == otherBook.width:
+                        leftAnotherBookSide = otherBook.width
+                        if minLength != otherBook.height:
+                            leftAnotherBookSide =  otherBook.height
+                        othersideLenght = book.height + leftAnotherBookSide
+                        if othersideLenght < minLength:
+                            minLength = othersideLenght
+                        elif minLength * 2 >1720:
+                            if leftAnotherBookSide < book.height:
+                                minLength = leftAnotherBookSide
+                    elif book.height == otherBook.height or book.height == otherBook.width:
                         minLength = book.height
+                        leftAnotherBookSide = otherBook.width
+                        if minLength!=otherBook.height:
+                            leftAnotherBookSide = otherBook.height
+                        othersideLenght = book.width + leftAnotherBookSide
+                        if othersideLenght < minLength:
+                            minLength = othersideLenght
+                        elif leftAnotherBookSide < book.height:
+                                minLength = leftAnotherBookSide
+
         return minLength
